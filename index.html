@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jane Doe | Professional Portfolio</title>
+    <title>Thomas Shaw | Professional Portfolio</title>
     <!-- Load Inter font from Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
     <style>
@@ -295,7 +295,7 @@
     <header class="header">
         <div class="container">
             <nav class="nav">
-                <a href="#hero" class="logo">Jane Doe</a>
+                <a href="#hero" class="logo">Thomas Shaw</a>
                 <button class="menu-toggle" aria-expanded="false" aria-controls="nav-links-list">☰</button>
                 <ul class="nav-links" id="nav-links-list">
                     <li><a href="#about">About</a></li>
@@ -310,7 +310,7 @@
         <!-- 1. Hero Section -->
         <section id="hero" class="hero-section section-padding">
             <div class="container">
-                <h1>Hello, I'm Jane Doe.</h1>
+                <h1>Hello, I'm Thomas Shaw.</h1>
                 <p>A passionate web developer specializing in responsive design and clean code.</p>
                 <a href="#projects" class="button button-primary">View My Work</a>
             </div>
@@ -320,8 +320,8 @@
         <section id="about" class="section-padding">
             <div class="container">
                 <h2>About Me</h2>
-                <p>I'm a self-taught developer with 5 years of experience building scalable and accessible web applications. My focus is on the intersection of intuitive design and robust engineering, solving real-world problems one line of code at a time.</p>
-                <p>I'm currently looking for new opportunities in full-stack development. When I'm not coding, you can find me hiking or reading fantasy novels.</p>
+                <p>I'm a self-taught developer / Engineer with many years of experience building scalable and accessible web applications. My focus is on the intersection of intuitive design and robust engineering, solving real-world problems one line of code at a time.</p>
+                <p>I'm currently looking for new opportunities in full-stack development or Engineering. When I'm not coding, you can find me Working on my Art and Streaming Channels.</p>
             </div>
         </section>
 
@@ -333,24 +333,24 @@
                     
                     <div class="project-card">
                         <div>
-                            <h3>Project Alpha</h3>
-                            <p>A fully responsive e-commerce platform built with React and a custom headless CMS. Optimized for mobile performance.</p>
+                            <h3>Project Alpha, Streaming</h3>
+                            <p>Currently working on my Streaming Sites, Making my Art while using my Coding Skills.</p>
                         </div>
                         <a href="#" class="button" style="background-color: #eee; color: var(--color-primary);">Case Study →</a>
                     </div>
 
                     <div class="project-card">
                         <div>
-                            <h3>Project Beta</h3>
-                            <p>A data visualization tool using D3.js to track global climate trends over the last decade. Features interactive filtering.</p>
+                            <h3>Project Beta, IT Engineering</h3>
+                            <p>Working on making Coding .EXE's of old codes I've made in the past.</p>
                         </div>
                         <a href="#" class="button" style="background-color: #eee; color: var(--color-primary);">View Demo →</a>
                     </div>
 
                     <div class="project-card">
                         <div>
-                            <h3>Project Gamma</h3>
-                            <p>A simple, multi-player drawing game using WebSockets. Focused on low-latency synchronization and efficient canvas rendering.</p>
+                            <h3>Project Gamma, Gaming IT Course</h3>
+                            <p>Making simple, games using my Programing Skills from my IT course. Focused on Learning the Fundamentals of Coding.</p>
                         </div>
                         <a href="#" class="button" style="background-color: #eee; color: var(--color-primary);">Details →</a>
                     </div>
@@ -365,17 +365,24 @@
                 <h2>Get In Touch</h2>
                 <p>Have a question or want to collaborate? Send me a message!</p>
 
-                <form class="contact-form">
+                <!-- 
+                    *** THIS FORM IS NOW CONFIGURED FOR FORMSPREE ***
+                    ACTION URL: https://formspree.io/f/mkgqzzwd
+                -->
+                <form class="contact-form" action="https://formspree.io/f/mkgqzzwd" method="POST">
                     <label for="name">Name</label>
                     <input type="text" id="name" name="name" required>
 
                     <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
+                    <!-- IMPORTANT: Changed name to _replyto so Formspree knows which email to reply to -->
+                    <input type="email" id="email" name="_replyto" required> 
 
                     <label for="message">Message</label>
                     <textarea id="message" name="message" required></textarea>
 
                     <button type="submit" class="button button-primary">Send Message</button>
+                    <!-- Hidden field to define the subject line in your email -->
+                    <input type="hidden" name="_subject" value="New Portfolio Inquiry from Website">
                 </form>
             </div>
         </section>
@@ -385,7 +392,7 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2025 Jane Doe. Built with <a href="#hero">Code</a> and Coffee.</p>
+            <p>&copy; 2025 Thomas Shaw. Built with <a href="#hero">Code</a> and Coffee.</p>
         </div>
     </footer>
 
