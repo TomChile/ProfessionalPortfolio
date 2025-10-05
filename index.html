@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jane Doe | Professional Portfolio</title>
+    <!-- Load Inter font from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* ====================================================== */
+        /* 1. CSS VARIABLES (Custom Properties) & GLOBAL RESET    */
+        /* ====================================================== */
+
+        /* Define primary colors, typography, and spacing globally */
+        :root {
+            --color-primary: #3f72af;        /* Professional Deep Blue */
+            --color-secondary: #f05454;      /* A bright coral/red for accents */
+            --color-text-dark: #1f2937;      /* Dark gray for main text */
+            --color-text-light: #ffffff;     /* White for light backgrounds */
+            --color-background-main: #f9fafb; /* Light background */
+            --color-background-card: #ffffff;
+            --font-family-main: 'Inter', sans-serif;
+            --spacing-xs: 4px;
+            --spacing-sm: 8px;
+            --spacing-md: 16px;
+            --spacing-lg: 32px;
+            --border-radius-lg: 12px;
+        }
+
+        /* Universal Reset: Apply consistent box model and remove default margins */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Base Body Styling */
+        body {
+            font-family: var(--font-family-main);
+            color: var(--color-text-dark);
+            background-color: var(--color-background-main);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+            min-height: 100vh;
+        }
+
+        /* ====================================================== */
+        /* 2. TYPOGRAPHY AND UTILITIES                            */
+        /* ====================================================== */
+
+        h1, h2, h3, h4 {
+            color: var(--color-text-dark);
+            line-height: 1.2;
+            margin-bottom: var(--spacing-md);
+            font-weight: 700;
+        }
+
+        h1 { font-size: clamp(2.5rem, 6vw, 4rem); } /* Fluid scaling headline */
+        h2 { font-size: clamp(2rem, 5vw, 3rem); }
+        h3 { font-size: 1.5rem; }
+
+        p {
+            margin-bottom: var(--spacing-md);
+        }
+
+        a {
+            color: var(--color-primary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--color-secondary);
+        }
+
+        /* Utility Class for Content Centering */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-lg); /* Increased padding for better mobile feel */
+        }
+
+        /* ====================================================== */
+        /* 3. HEADER & NAVIGATION                                 */
+        /* ====================================================== */
+
+        .header {
+            background-color: var(--color-background-card);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--spacing-md) 0;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: var(--spacing-lg);
+        }
+
+        .nav-links a {
+            font-weight: 600;
+            color: var(--color-text-dark);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--color-primary);
+        }
+        
+        /* Mobile Menu Toggle (Hidden on Desktop) */
+        .menu-toggle {
+            display: none;
+        }
+
+        /* ====================================================== */
+        /* 4. MAIN SECTIONS & COMPONENTS                          */
+        /* ====================================================== */
+
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        /* Hero Section Styles */
+        .hero-section {
+            background-color: var(--color-primary);
+            color: var(--color-text-light);
+            text-align: center;
+            padding: 120px 0;
+        }
+
+        .hero-section h1 {
+            color: var(--color-text-light);
+            margin-bottom: var(--spacing-md);
+            font-weight: 900;
+        }
+        
+        .hero-section p {
+            font-size: 1.25rem;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        /* Button Component */
+        .button {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: var(--border-radius-lg);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease;
+            border: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .button-primary {
+            background-color: var(--color-secondary);
+            color: var(--color-text-light);
+        }
+
+        .button-primary:hover {
+            background-color: #d14141; /* Slightly darker secondary color */
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Project Card Layout (e.g., for a skills or projects grid) */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-lg);
+        }
+
+        .project-card {
+            background-color: var(--color-background-card);
+            padding: var(--spacing-lg);
+            border-radius: var(--border-radius-lg);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .project-card h3 {
+            color: var(--color-primary);
+        }
+
+        /* Contact Form Styling */
+        .contact-form label {
+            display: block;
+            margin-bottom: var(--spacing-sm);
+            font-weight: 600;
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: var(--spacing-sm);
+            margin-bottom: var(--spacing-md);
+            border: 1px solid #ccc;
+            border-radius: var(--border-radius-lg);
+            font-family: var(--font-family-main);
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+
+        /* ====================================================== */
+        /* 5. FOOTER                                              */
+        /* ====================================================== */
+
+        footer {
+            background-color: var(--color-text-dark);
+            color: var(--color-background-main);
+            text-align: center;
+            padding: var(--spacing-lg) 0;
+            margin-top: var(--spacing-lg);
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--color-secondary);
+        }
+
+
+        /* ====================================================== */
+        /* 6. MEDIA QUERIES (Responsiveness)                      */
+        /* ====================================================== */
+
+        @media (max-width: 768px) {
+            /* Adjustments for smaller screens (tablets and phones) */
+
+            .nav-links {
+                display: none; /* Hide links by default on mobile */
+                flex-direction: column;
+                gap: var(--spacing-sm);
+                width: 100%;
+                text-align: center;
+                padding-top: var(--spacing-md);
+            }
+            
+            /* Show menu links when the 'active' class is applied by JS */
+            .nav.active .nav-links {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+                font-size: 1.5rem;
+                background: none;
+                border: none;
+                color: var(--color-text-dark);
+                cursor: pointer;
+            }
+
+            .nav {
+                flex-wrap: wrap; /* Allow wrapping when menu is open */
+            }
+            
+            .hero-section {
+                padding: 80px var(--spacing-lg);
+            }
+
+            .section-padding {
+                padding: 60px 0;
+            }
+
+            .project-grid {
+                grid-template-columns: 1fr; /* Stack cards vertically */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header and Navigation -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="#hero" class="logo">Jane Doe</a>
+                <button class="menu-toggle" aria-expanded="false" aria-controls="nav-links-list">☰</button>
+                <ul class="nav-links" id="nav-links-list">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- 1. Hero Section -->
+        <section id="hero" class="hero-section section-padding">
+            <div class="container">
+                <h1>Hello, I'm Jane Doe.</h1>
+                <p>A passionate web developer specializing in responsive design and clean code.</p>
+                <a href="#projects" class="button button-primary">View My Work</a>
+            </div>
+        </section>
+
+        <!-- 2. About Section -->
+        <section id="about" class="section-padding">
+            <div class="container">
+                <h2>About Me</h2>
+                <p>I'm a self-taught developer with 5 years of experience building scalable and accessible web applications. My focus is on the intersection of intuitive design and robust engineering, solving real-world problems one line of code at a time.</p>
+                <p>I'm currently looking for new opportunities in full-stack development. When I'm not coding, you can find me hiking or reading fantasy novels.</p>
+            </div>
+        </section>
+
+        <!-- 3. Projects Section -->
+        <section id="projects" class="section-padding" style="background-color: #ebf0f7;">
+            <div class="container">
+                <h2>Featured Projects</h2>
+                <div class="project-grid">
+                    
+                    <div class="project-card">
+                        <div>
+                            <h3>Project Alpha</h3>
+                            <p>A fully responsive e-commerce platform built with React and a custom headless CMS. Optimized for mobile performance.</p>
+                        </div>
+                        <a href="#" class="button" style="background-color: #eee; color: var(--color-primary);">Case Study →</a>
+                    </div>
+
+                    <div class="project-card">
+                        <div>
+                            <h3>Project Beta</h3>
+                            <p>A data visualization tool using D3.js to track global climate trends over the last decade. Features interactive filtering.</p>
+                        </div>
+                        <a href="#" class="button" style="background-color: #eee; color: var(--color-primary);">View Demo →</a>
+                    </div>
+
+                    <div class="project-card">
+                        <div>
+                            <h3>Project Gamma</h3>
+                            <p>A simple, multi-player drawing game using WebSockets. Focused on low-latency synchronization and efficient canvas rendering.</p>
+                        </div>
+                        <a href="#" class="button" style="background-color: #eee; color: var(--color-primary);">Details →</a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Contact Section -->
+        <section id="contact" class="section-padding">
+            <div class="container">
+                <h2>Get In Touch</h2>
+                <p>Have a question or want to collaborate? Send me a message!</p>
+
+                <form class="contact-form">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" required></textarea>
+
+                    <button type="submit" class="button button-primary">Send Message</button>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Jane Doe. Built with <a href="#hero">Code</a> and Coffee.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Smooth Scrolling and Mobile Menu Toggle -->
+    <script>
+        // Smooth Scrolling JavaScript
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                // Prevent default jump action for hash links
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    // Scroll smoothly into view
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+
+                    // Optional: Close the mobile menu after clicking a link
+                    const nav = document.querySelector('.nav');
+                    const toggle = document.querySelector('.menu-toggle');
+                    if (nav.classList.contains('active')) {
+                        nav.classList.remove('active');
+                        toggle.setAttribute('aria-expanded', 'false');
+                    }
+                }
+            });
+        });
+
+        // Mobile Menu Toggle JavaScript
+        const nav = document.querySelector('.nav');
+        const menuToggle = document.querySelector('.menu-toggle');
+
+        menuToggle.addEventListener('click', () => {
+            const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true' || false;
+            
+            // Toggle the 'active' class on the nav element
+            nav.classList.toggle('active');
+            
+            // Toggle the aria-expanded attribute
+            menuToggle.setAttribute('aria-expanded', !isExpanded);
+        });
+    </script>
+
+</body>
+</html>
